@@ -101,7 +101,7 @@ function isWaitingForInputs() {
 
 function sendReplica() {
   if (isWaitingForInputs()) {
-    const aiPrompt = (curRegime === Regime.CHATBOT) ? 'Assistant:' : '';
+    const aiPrompt = (curRegime === Regime.CHATBOT) ? '6079:' : '';
     $('.human-replica:last').text($('.human-replica:last textarea').val());
     $('.dialogue').append($(
       '<p class="ai-replica">' +
@@ -246,7 +246,7 @@ function retry() {
 }
 
 function appendTextArea() {
-  const humanPrompt = (curRegime === Regime.CHATBOT) ? "Human: " : "";
+  const humanPrompt = (curRegime === Regime.CHATBOT) ? "" : "";
   $('.dialogue').append($(
     `<p class="human-replica"><textarea class="form-control" id="exampleTextarea" rows="2">${humanPrompt}</textarea></p>`
   ));

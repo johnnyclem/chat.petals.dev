@@ -19,7 +19,6 @@ def http_api_generate():
         temperature = get_typed_arg("temperature", float)
         top_k = get_typed_arg("top_k", int)
         top_p = get_typed_arg("top_p", float)
-        repetition_penalty = get_typed_arg("repetition_penalty", float)
         max_length = get_typed_arg("max_length", int)
         max_new_tokens = get_typed_arg("max_new_tokens", int)
         session_id = request.values.get("session_id")
@@ -44,7 +43,6 @@ def http_api_generate():
             temperature=temperature,
             top_k=top_k,
             top_p=top_p,
-            repetition_penalty=repetition_penalty,
             max_length=max_length,
             max_new_tokens=max_new_tokens,
         )

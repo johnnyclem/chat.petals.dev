@@ -56,7 +56,7 @@ def http_api_generate():
         return jsonify(ok=False, traceback=format_exc())
 
 # Create a chat_completions endpoint with the required logic to be call compatible with OpenAI style api call
-@app.route("/api/v3/generate", methods=['POST'])
+@app.post("/api/v3/generate")
 def chat_completions():
     try:
         # Extract parameters from the request

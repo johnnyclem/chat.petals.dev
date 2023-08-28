@@ -9,6 +9,7 @@ from utils import safe_decode
 
 logger = hivemind.get_logger(__file__)
 
+api_key = "alphi12345"
 
 @app.post("/api/v1/generate")
 def http_api_generate():
@@ -23,10 +24,16 @@ def http_api_generate():
         max_new_tokens = get_typed_arg("max_new_tokens", int)
         session_id = request.values.get("session_id")
         logger.info(f"generate(), model={repr(model_name)}, inputs={repr(inputs)}")
+        provided_api_key = request.values.get("api_key")
 
         if session_id is not None:
             raise RuntimeError(
                 "Reusing inference sessions was removed from HTTP API, please use WebSocket API instead"
+            )
+        
+        if provided_api_key != api_key:
+            raise RuntimeError(
+                "Provided API key is invalid"
             )
 
         model, tokenizer = models[model_name]

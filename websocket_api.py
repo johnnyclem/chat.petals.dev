@@ -11,12 +11,14 @@ from utils import safe_decode
 
 logger = hivemind.get_logger(__file__)
 
+api_key = "alphi12345"
 
 @sock.route("/api/v2/generate")
 def ws_api_generate(ws):
     try:
         request = json.loads(ws.receive(timeout=config.STEP_TIMEOUT))
         assert request["type"] == "open_inference_session"
+        assert request["key"] == api_key
         model_name = request.get("model")
         if model_name is None:
             model_name = config.DEFAULT_MODEL_NAME

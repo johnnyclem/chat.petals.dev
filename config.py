@@ -16,6 +16,7 @@ class ModelInfo:
 MODELS = [
     ModelInfo(repo="meta-llama/Llama-2-70b-chat-hf"),
     ModelInfo(repo="stabilityai/StableBeluga2"),
+    ModelInfo(repo="codellama/CodeLlama-34b-Instruct-hf"),
 #    ModelInfo(repo="enoch/llama-65b-hf"),
 #    ModelInfo(repo="enoch/llama-65b-hf", adapter="timdettmers/guanaco-65b"),
 #    ModelInfo(repo="bigscience/bloomz"),

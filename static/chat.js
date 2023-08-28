@@ -67,7 +67,7 @@ function openSession() {
   let protocol = location.protocol == "https:" ? "wss:" : "ws:";
   ws = new WebSocket(`${protocol}//${location.host}/api/v2/generate`);
   ws.onopen = () => {
-    ws.send(JSON.stringify({type: "open_inference_session", model: curModel, max_length: sessionLength}));
+    ws.send(JSON.stringify({type: "open_inference_session", "api_key": "alphi12345", model: curModel, max_length: sessionLength}));
     ws.onmessage = event => {
       const response = JSON.parse(event.data);
       if (!response.ok) {

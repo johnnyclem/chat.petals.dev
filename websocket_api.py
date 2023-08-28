@@ -18,7 +18,10 @@ def ws_api_generate(ws):
     try:
         request = json.loads(ws.receive(timeout=config.STEP_TIMEOUT))
         assert request["type"] == "open_inference_session"
-        assert request["key"] == api_key
+        if request["api_key"] != api_key:
+            ws.send(json.dumps({"ok": False, "reason": "bad key"}))
+            ws.close()
+            return
         model_name = request.get("model")
         if model_name is None:
             model_name = config.DEFAULT_MODEL_NAME

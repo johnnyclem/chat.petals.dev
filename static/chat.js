@@ -50,7 +50,7 @@ const generationParams = {
 
 var ws = null;
 var position = 0;
-const initialSessionLength = 512;
+const initialSessionLength = 8192;
 var sessionLength = initialSessionLength;
 var connFailureBefore = false;
 
